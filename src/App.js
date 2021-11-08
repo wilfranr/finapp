@@ -4,9 +4,7 @@ import { v4 as uuid } from 'uuid'
 
 export function App(){
     const [contacts, setContacts] = useState([
-        // {id: 1, name:'Ana Sofia'},
-        // {id: 2, name:'Ana Sofia'},
-        // {id: 3, name:'Ana Sofia'},
+       
     ])
     const KEY = 'contacts'
     const contactRef = useRef()
@@ -45,12 +43,21 @@ export function App(){
 
     // return ( <div>Hola React</div> )
     return (
-        <Fragment>
-        <ContactList  contacts={contacts} checkContact={checkContact}/>
-        <input ref={contactRef} type="text" placeholder="nuevo contacto"/><br/><br/>
-        <button onClick={addContact}>🙋Add</button>
-        <button onClick={deleteContact}>❌Eliminar</button>
-        <p>💁 {contacts.filter((contact)=> contact.isSelected).length} contactos seleccionados</p>
-        </Fragment>
+        <div className="container mt-5">
+            <div className="d-flex justify-content-center">
+                <Fragment>
+            <h1>Mis Contactos</h1>
+                <ContactList  contacts={contacts} checkContact={checkContact}/>
+                <div className="col-3">
+                    <input ref={contactRef} type="text" placeholder="nuevo contacto"/><br/><br/>
+                    <button className="btn btn-primary btn-sm m-2" onClick={addContact}>Add</button>
+                    <button className="btn btn-danger btn-sm" onClick={deleteContact}>Eliminar</button>
+                    <p>💁 {contacts.filter((contact)=> contact.isSelected).length} contactos seleccionados</p>
+                </div>
+                </Fragment>
+            </div>
+        </div>
     )
 }
+
+
